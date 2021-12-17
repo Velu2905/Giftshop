@@ -61,6 +61,10 @@ public class Product {
 		this.productId = productId;
 		
 	}
+	public Product(int productId) {
+		super();
+		this.productId = productId;
+	}
 	
 	
 	

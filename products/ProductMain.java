@@ -9,24 +9,43 @@ public class ProductMain {
 		// TODO Auto-generated method stub
 
 		Scanner input=new Scanner(System.in);
-		System.out.println("Enter your choice press 1 to insert,2 to update,3 to delete");
-		int num=input.nextInt();
+		System.out.println("Enter your choice press \n1.Inset \n2.Update \n3.Delete");
+//		int num=input.nextInt();
+		int num=Integer.parseInt(input.nextLine());
 		
 		ProductDao ob=new ProductDao();
 		switch(num)
 		{
 		case 1:
-			System.out.println("Enter insert details");
-		String s1=input.next();
-		Product pr= new Product(Integer.parseInt(s1.split(",")[0]),s1.split(",")[1],s1.split(",")[2],
-				Double.parseDouble(s1.split(",")[3]),s1.split(",")[4]);
-		ob.insert(pr);
+			System.out.println("Enter insert details:");
+		System.out.println("Enter product Id");
+		int s1=Integer.parseInt(input.nextLine());
+		System.out.println("Enter product name");
+		String s3=input.next();
+		System.out.println("Enter product Description");
+		String s4=input.next();
+		System.out.println("Enter product Standard cost");
+		double  s5=Double.parseDouble(input.next());
+		System.out.println("Enter product category");
+		String s6=input.next();
+//		Product pr= new Product(Integer.parseInt(s1.split(",")[0]),s1.split(",")[1],s1.split(",")[2],
+//				Double.parseDouble(s1.split(",")[3]),s1.split(",")[4]);
+//		ob.insert(pr);
+		Product pr =new Product(s1, s3, s4, s5, s6);
 		break;
 		case 2:
 		System.out.println("Enter your update details-first product name,next Product id ");
 		String s2=input.next();
 		Product pr1=new Product(s2.split(",")[0] ,Integer.parseInt(s2.split(",")[1]));
 		ob.update(pr1);
+		break;
+		case 3:
+			System.out.println("Enter product_id to delete ");
+			int s=input.nextInt();
+			Product Pr=new Product(s);
+			DeleteDao.delete(Pr);
+	
+			break;
 		}
 		
 	}  
